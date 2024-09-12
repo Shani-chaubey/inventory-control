@@ -1,11 +1,12 @@
 import DashboardBanner from '@/components/dashboard/Dashboardbanner'
+import SalesOverview from '@/components/dashboard/SalesOverview'
 import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className=''>
         <DashboardBanner />
-        <h2>Dashboard</h2>
+        <SalesOverview />
     </div>
   )
 }

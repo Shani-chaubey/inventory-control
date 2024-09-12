@@ -32,8 +32,8 @@ const HomeNavbar = () => {
                     <Users className='text-slate-400'/>
                 </div>
                 <div className='flex flex-col'>
-                    <p className='font-semibold text-slate-900'>Hello, Himanshu</p>
-                    <span className='text-sm'>Great</span>
+                    <p className='font-semibold text-slate-900'>Hello, Dear Himanshu</p>
+                    <span className='text-sm'>Demo Org</span>
                 </div>
             </div>
             <nav className='sticky mt-6 flex space-x-4'>
