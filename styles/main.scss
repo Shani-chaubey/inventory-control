@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header-bg{
+    background-image: url('https://www.zoho.com/inventory/inventory-software-demo/assets/images/svgs/home-header-bg-zom-f063611a9d.svg');
+    background-repeat: repeat;
+}
