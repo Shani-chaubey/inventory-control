@@ -55,9 +55,9 @@ const SalesOverview = () => {
                 <h2 className='mb-6 text-xl'>Sales Activity</h2>
                 <div className='grid grid-cols-4 gap-4 pr-8'>
                     {
-                        salesActivity.map((item, i) => {
+                        salesActivity.map((item, index) => {
                             return (
-                                <SalesActivityCard href={item.href} key={i} color={item.color} qty={item.qty} status={item.status} unit={item.unit}/>
+                                <SalesActivityCard href={item.href} itemKey={index} color={item.color} qty={item.qty} status={item.status} unit={item.unit}/>
                             )
                         })
                     }
@@ -69,9 +69,9 @@ const SalesOverview = () => {
                 <h2 className='mb-6 text-xl'>Inventory Summary</h2>
                 <div>
                     {
-                        inventorySummary.map((item, i) => {
+                        inventorySummary.map((item, index) => {
                             return (
-                                <InventorySummarycard key={i} title={item.title} qty={item.qty} />
+                                <InventorySummarycard key={index} title={item.title} qty={item.qty} />
                             )
                         })
                     }

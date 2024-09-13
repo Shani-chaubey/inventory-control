@@ -1,9 +1,9 @@
 import { CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 
-const SalesActivityCard = ({href, key, color, qty, unit, status }) => {
+const SalesActivityCard = ({href, itemKey, color, qty, unit, status }) => {
     return (
-        <Link href={href} key={key} className='shadow rounded-lg bg-white border border-slate-200 hover:border-blue-600 px-3 py-4 cursor-pointer
+        <Link href={href} key={itemKey} className='shadow rounded-lg bg-white border border-slate-200 hover:border-blue-600 px-3 py-4 cursor-pointer
                                 flex items-center flex-col gap-3 transition-all duration-300'>
             <h4 className={`font-semibold text-3xl ${color}`}>{qty}</h4>
             <small className='text-slate-500'>{unit}</small>

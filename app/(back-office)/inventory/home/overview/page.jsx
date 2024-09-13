@@ -1,4 +1,4 @@
-import DashboardBanner from '@/components/dashboard/Dashboardbanner'
+import DashboardBanner from '@/components/dashboard/DashboardBanner'
 import SalesOverview from '@/components/dashboard/SalesOverview'
 import React from 'react'
 

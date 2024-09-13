@@ -25,7 +25,7 @@ const Header = () => {
         </div>
         {/* User Icon  */}
         <div className="flex gap-3">
-          <button className='flex items-center'>
+          <button className='flex items-center justify-center'>
             <span>Great</span>
             <ChevronDown className='w-4 h-4' />
           </button>
