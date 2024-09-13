@@ -1,12 +1,17 @@
 "use client"
 import FormHeader from '@/components/dashboard/FormHeader'
+import SubmitButton from '@/components/FormInputs/SubmitButton'
 import TextInput from '@/components/FormInputs/TextInput'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 const NewCategories = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+
+  const [loading, setLoading] = useState(false)
   const onSubmit = (data) => {
     console.log(data)
+    reset()
   }
   return (
     <div>
@@ -15,12 +20,10 @@ const NewCategories = () => {
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
           <TextInput label='Category Name' name='categoryName' placeholder='Enter Category name' register={register} errors={errors} />
-          <TextInput label='Category Description' name='description' placeholder='Enter Category Description'  register={register} errors={errors} />
+          {/* <TextInput label='Category Description' name='description' placeholder='Enter Category Description'  register={register} errors={errors} /> */}
+          
 
-        </div>
-        <div className='mt-6 sm:col-span-1'>
-          <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium
-         rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+          <SubmitButton isLoading={loading} title='Categoy' />
         </div>
       </form>
     </div>
