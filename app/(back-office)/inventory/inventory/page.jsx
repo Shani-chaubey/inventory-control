@@ -1,7 +1,6 @@
 import FixedHeader from '@/components/dashboard/FixedHeader'
 import OptionCard from '@/components/dashboard/OptionCard'
-import { Boxes, Component, ReceiptIndianRupee, Shirt, Tag, Warehouse } from 'lucide-react'
-import React from 'react'
+import { ArrowRightLeft, LayoutGrid, LayoutPanelTop, Scale, Tag, Warehouse } from 'lucide-react'
 
 const Inventory = () => {
 
@@ -12,7 +11,7 @@ const Inventory = () => {
       link: '/inventory/inventory/items/new',
       linkTitle: 'New Item',
       enabled: true,
-      icon: Shirt
+      icon: LayoutGrid
     },
     {
       title: 'Categories',
@@ -20,7 +19,7 @@ const Inventory = () => {
       link: '/inventory/inventory/categories/new',
       linkTitle: 'New Category',
       enabled: true,
-      icon: Boxes
+      icon: LayoutPanelTop
     },
     {
       title: 'Brands',
@@ -36,7 +35,7 @@ const Inventory = () => {
       link: '/inventory/inventory/units/new',
       linkTitle: 'New Unit',
       enabled: true,
-      icon: Component
+      icon: Scale
     },
     {
       title: 'Warehouses',
@@ -48,18 +47,18 @@ const Inventory = () => {
     },
     {
       title: 'Adjustments',
-      tagLine: 'Tweak your item prices for specific contacts or transactions',
+      tagLine: 'Transfer Stocks from Main warehouse',
       link: '/inventory/inventory/adjustments/new',
       linkTitle: 'New Adjustment',
-      enabled: false,
-      icon: ReceiptIndianRupee
+      enabled: true,
+      icon: ArrowRightLeft
     },
   ]
 
   return (
     <div>
       <FixedHeader newLink='/inventory/inventory/items/new' />
-      <div className='grid grid-cols-1 lg:grid-cols-2 m-4 py-4 px-16 gap-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 py-4 px-16 gap-8'>
         {
           itemCards.map((item, i)=>{
               return <OptionCard optionData={item} key={i} />

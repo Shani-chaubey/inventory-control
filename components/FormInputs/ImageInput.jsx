@@ -1,9 +1,19 @@
+import { ImageRemove } from '@/action/ImageRemove';
 import { UploadDropzone } from '@/lib/uploadthing';
 import { Pencil } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 
 const ImageInput = ({ className, label, imageUrl, setImageUrl, endpoint }) => {
+    const [ imageKey, setImageKey] = useState("")
+    const removeImage = async()=>{
+        const response = await ImageRemove(imageKey)
+        if(response.success){
+            setImageUrl("")
+            setImageKey("")
+            console.log("File Removed")
+        }
+    }
     return (
         <div className={className}>
             <div className="flex justify-between items-center mb-4">
@@ -15,9 +25,7 @@ const ImageInput = ({ className, label, imageUrl, setImageUrl, endpoint }) => {
                 </label>
                 {imageUrl && (
                     <button
-                        onClick={() => {
-                            setImageUrl("")
-                        }}
+                        onClick={removeImage}
                         type="button"
                         className="flex space-x-2  bg-slate-900 rounded-md shadow text-slate-50  py-2 px-4"
                     >
@@ -39,6 +47,7 @@ const ImageInput = ({ className, label, imageUrl, setImageUrl, endpoint }) => {
                     endpoint={endpoint}
                     onClientUploadComplete={(res) => {
                         setImageUrl(res[0].appUrl);
+                        setImageKey(res[0].key);
                         // Do something with the response
                     }}
                     onUploadError={(error) => {
