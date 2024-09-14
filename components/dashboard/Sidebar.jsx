@@ -9,65 +9,80 @@ const Sidebar = () => {
   const inventoryLinks = [
     {
       title: 'Items',
-      href: '/inventory/inventory/items/new'
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/items/new'
     },
     {
       title: 'Categories',
-      href: '/inventory/inventory/categories/new'
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/categories/new'
     },
     {
       title: 'Brands',
-      href: '/inventory/inventory/brands/new'
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/brands/new'
     },
     {
       title: 'Units',
-      href: '/inventory/inventory/units/new'
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/units/new'
     },
     {
       title: 'Warehouses',
-      href: '/inventory/inventory/warehouse/new'
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/warehouse/new'
     },
     {
       title: 'Inventory Adjustments',
-      href: '/inventory/inventory/categories/new'
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/adjustments/new'
     }
   ]
   const salesLinks = [
     {
       title: 'Customers',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Sales Orders',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Packages',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Shipments',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Invoices',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Sales Receipts',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Payment received',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Sales returns',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
     {
       title: 'Credit Notes',
-      href: '/'
+      href: '/',
+      newItemHref: '/'
     },
   ]
   return (

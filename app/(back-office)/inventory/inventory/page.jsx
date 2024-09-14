@@ -1,6 +1,6 @@
 import FixedHeader from '@/components/dashboard/FixedHeader'
 import OptionCard from '@/components/dashboard/OptionCard'
-import { Boxes, Component, ReceiptIndianRupee, Shirt } from 'lucide-react'
+import { Boxes, Component, ReceiptIndianRupee, Shirt, Tag, Warehouse } from 'lucide-react'
 import React from 'react'
 
 const Inventory = () => {
@@ -9,33 +9,49 @@ const Inventory = () => {
     {
       title: 'Items',
       tagLine: 'Create standalone items and services that you buy and sell  ',
-      link: '/new',
+      link: '/inventory/inventory/items/new',
       linkTitle: 'New Item',
-      enabled: 'true',
+      enabled: true,
       icon: Shirt
     },
     {
-      title: 'Item groups',
+      title: 'Categories',
       tagLine: 'Create multiple variants of the same item using Item Groups',
-      link: '/',
-      linkTitle: 'New Item Group',
-      enabled: 'false',
+      link: '/inventory/inventory/categories/new',
+      linkTitle: 'New Category',
+      enabled: true,
       icon: Boxes
     },
     {
-      title: 'Composite Items',
+      title: 'Brands',
       tagLine: 'Bundle different items together and sell them as kits',
-      link: '/',
-      linkTitle: 'New Composite Item',
-      enabled: 'false',
+      link: '/inventory/inventory/brands/new',
+      linkTitle: 'New Brand',
+      enabled: true,
+      icon: Tag
+    },
+    {
+      title: 'Units',
+      tagLine: 'Tweak your item prices for specific contacts or transactions',
+      link: '/inventory/inventory/units/new',
+      linkTitle: 'New Unit',
+      enabled: true,
       icon: Component
     },
     {
-      title: 'Price Lists',
+      title: 'Warehouses',
       tagLine: 'Tweak your item prices for specific contacts or transactions',
-      link: '/',
-      linkTitle: 'New Price List',
-      enabled: 'false',
+      link: '/inventory/inventory/warehouse/new',
+      linkTitle: 'New Warehouse',
+      enabled: true,
+      icon: Warehouse
+    },
+    {
+      title: 'Adjustments',
+      tagLine: 'Tweak your item prices for specific contacts or transactions',
+      link: '/inventory/inventory/adjustments/new',
+      linkTitle: 'New Adjustment',
+      enabled: false,
       icon: ReceiptIndianRupee
     },
   ]
