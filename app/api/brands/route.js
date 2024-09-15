@@ -1,10 +1,13 @@
+import db from "@/lib/db"
 import { NextResponse } from "next/server"
 
 
 export const POST = async(request)=>{
     try {
         const { title } = await request.json()
-        const brand = { title }
+        const brand = await db.brand.create({
+            data: { title }
+        })
         return NextResponse.json({
             message:"Brand created successfully",
             success:true,

@@ -1,15 +1,12 @@
 "use client"
 import FormHeader from '@/components/dashboard/FormHeader'
+import ImageInput from '@/components/FormInputs/ImageInput'
 import SelectInput from '@/components/FormInputs/SelectInput'
 import SubmitButton from '@/components/FormInputs/SubmitButton'
 import TextAreaInput from '@/components/FormInputs/TextAreaInput'
 import TextInput from '@/components/FormInputs/TextInput'
-import { UploadDropzone } from '@/lib/uploadthing'
-import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import Image from "next/image";
-import ImageInput from '@/components/FormInputs/ImageInput'
 
 const NewItem = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()

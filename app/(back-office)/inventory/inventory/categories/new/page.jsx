@@ -5,6 +5,7 @@ import TextAreaInput from '@/components/FormInputs/TextAreaInput'
 import TextInput from '@/components/FormInputs/TextInput'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const NewCategory = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
@@ -22,13 +23,13 @@ const NewCategory = () => {
         body: JSON.stringify(data)
       })
       if(response.ok){
-        console.log(response)
+        toast.success("Category has been created")
         reset()
         setLoading(false)
       }
     } catch (error) {
       setLoading(false)
-      console.log(error)
+      toast.error(error)
     }
   }
 
@@ -40,7 +41,7 @@ const NewCategory = () => {
 
           <TextInput label='Category Name' name='title' placeholder='Enter Category name' register={register} errors={errors} />
           
-          <TextAreaInput label='Category Description' name='description' placeholder='Enter something about Catgory' register={register} errors={errors} />
+          <TextAreaInput label='Category Description' name='description' isRequired={false} placeholder='Enter something about Catgory' register={register} errors={errors} />
 
           <SubmitButton isLoading={loading} title='Category' />
         </div>

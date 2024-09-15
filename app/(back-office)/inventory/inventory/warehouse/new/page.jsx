@@ -6,6 +6,7 @@ import TextAreaInput from '@/components/FormInputs/TextAreaInput'
 import TextInput from '@/components/FormInputs/TextInput'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const NewWarehouse = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
@@ -23,13 +24,13 @@ const NewWarehouse = () => {
         body: JSON.stringify(data)
       })
       if(response.ok){
-        console.log(response)
+        toast.success('Warehouse created successfully')
         reset()
         setLoading(false)
       }
     } catch (error) {
       setLoading(false)
-      console.log(error)
+      toast.error(error)
     }
   }
 
@@ -52,11 +53,11 @@ const NewWarehouse = () => {
 
           <TextInput label='Warehouse Name' name='title' placeholder='Enter Warehouse name' className='w-full' register={register} errors={errors} />
           
-          <TextInput label='Warehouse Location' name='location' placeholder='Enter Warehouse Location' className='w-full' register={register} errors={errors} />
+          <TextInput label='Warehouse Location' name='location' placeholder='Enter Warehouse Location' isRequired={false} className='w-full' register={register} errors={errors} />
 
           <SelectInput label='Warehouse Type' name='type' placeholder='Please choose a warehouse type' options={options} register={register} />
 
-          <TextAreaInput label='Warehouse Description' name='description' placeholder='Enter something about Warehouse' register={register} errors={errors} />
+          <TextAreaInput label='Warehouse Description' name='description' placeholder='Enter something about Warehouse'  isRequired={false} register={register} errors={errors} />
 
           <SubmitButton isLoading={loading} title='Warehouse' />
         </div>

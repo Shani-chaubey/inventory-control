@@ -5,6 +5,7 @@ import TextAreaInput from '@/components/FormInputs/TextAreaInput'
 import TextInput from '@/components/FormInputs/TextInput'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const NewUnit = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
@@ -22,13 +23,13 @@ const NewUnit = () => {
         body: JSON.stringify(data)
       })
       if(response.ok){
-        console.log(response)
+        toast.success("Unit created Successfully")
         reset()
         setLoading(false)
       }
     } catch (error) {
       setLoading(false)
-      console.log(error)
+      toast.error(error)
     }
   }
 
