@@ -23,3 +23,23 @@ export const POST = async(request)=>{
         })
     }
 }
+
+export const GET = async(request)=>{
+    try {
+        const categories = await db.category.findMany({
+            orderBy:{
+                createdAt:"desc"
+            }
+        })
+        return NextResponse.json(categories)
+
+    } catch (error) {
+        return NextResponse.json({
+            message: "Failed to fetch the categories",
+            success:false,
+            error
+        },{
+            status:500
+        })
+    }
+}

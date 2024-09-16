@@ -1,6 +1,6 @@
 import FixedHeader from '@/components/dashboard/FixedHeader'
 import OptionCard from '@/components/dashboard/OptionCard'
-import { ArrowRightLeft, LayoutGrid, LayoutPanelTop, Scale, Tag, Warehouse } from 'lucide-react'
+import { ArrowRightLeft, Factory, LayoutGrid, LayoutPanelTop, Scale, Tag, Warehouse } from 'lucide-react'
 
 const Inventory = () => {
 
@@ -46,6 +46,14 @@ const Inventory = () => {
       icon: Warehouse
     },
     {
+      title: 'Suppliers',
+      tagLine: 'Tweak your item prices for specific contacts or transactions',
+      link: '/inventory/inventory/suppliers/new',
+      linkTitle: 'New Supplier',
+      enabled: true,
+      icon: Factory
+    },
+    {
       title: 'Adjustments',
       tagLine: 'Transfer Stocks from Main warehouse',
       link: '/inventory/inventory/adjustments/new',
@@ -58,7 +66,7 @@ const Inventory = () => {
   return (
     <div>
       <FixedHeader newLink='/inventory/inventory/items/new' />
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 py-4 px-16 gap-8'>
+      <div className='grid grid-cols-1 gap-8 px-16 py-4 m-4 md:grid-cols-2 lg:grid-cols-3'>
         {
           itemCards.map((item, i)=>{
               return <OptionCard optionData={item} key={i} />

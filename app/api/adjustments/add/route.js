@@ -1,11 +1,13 @@
+import db from "@/lib/db"
 import { NextResponse } from "next/server"
 
 
 export const POST = async(request)=>{
     try {
-        const { addStockQty, receivingWarehouseId, notes } = await request.json()
-        const adjustments = { addStockQty, receivingWarehouseId, notes }
-        console.log(adjustments)
+        const { referenceNumber, addStockQty, receivingWarehouseId, notes, itemId } = await request.json()
+        const adjustments = await db.AddStockAdjustment.create({
+            data: { referenceNumber, addStockQty: parseInt(addStockQty), receivingWarehouseId, notes, itemId }
+        })
         return NextResponse.json({
             message:"Adjustment made successfully",
             success:true,

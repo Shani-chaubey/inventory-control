@@ -13,8 +13,8 @@ export default function SelectInput({ label, name, placeholder, register, classN
         <option value=''>{placeholder}</option>
           {options.map((option, i) => {
             return (
-              <option key={i} value={option.value}>
-                {option.label}
+              <option key={i} value={option.id}>
+                {option.title}
               </option>
             );
           })}

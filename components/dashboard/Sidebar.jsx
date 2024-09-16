@@ -33,6 +33,11 @@ const Sidebar = () => {
       newItemHref: '/inventory/inventory/warehouse/new'
     },
     {
+      title: 'Suppliers',
+      href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory/suppliers/new'
+    },
+    {
       title: 'Inventory Adjustments',
       href: '/inventory/inventory',
       newItemHref: '/inventory/inventory/adjustments/new'
@@ -86,18 +91,18 @@ const Sidebar = () => {
     },
   ]
   return (
-    <div className='w-60 min-h-screen bg-slate-900 text-slate-50 fixed flex flex-col justify-between'>
+    <div className='fixed flex flex-col justify-between min-h-screen w-60 bg-slate-900 text-slate-50'>
       <div className="flex flex-col">
 
         { /* Logo  */}
-        <Link href='/' className='flex space-x-2 items-center bg-slate-950 p-3'>
+        <Link href='/' className='flex items-center p-3 space-x-2 bg-slate-950'>
           <ShoppingCart />
-          <span className='font-bold text-xl'>Inventory</span>
+          <span className='text-xl font-bold'>Inventory</span>
         </Link>
 
         { /* Sidebar links  */}
         <nav className='flex flex-col gap-3 px-4 py-6'>
-          <Link href='/inventory/home/overview' className='flex items-center space-x-2 bg-blue-600 text-slate-50 p-2 rounded-lg'>
+          <Link href='/inventory/home/overview' className='flex items-center p-2 space-x-2 bg-blue-600 rounded-lg text-slate-50'>
             <Home className='w-4 h-4' />
             <span>Home</span>
           </Link>
@@ -108,19 +113,19 @@ const Sidebar = () => {
           { /* Sales Menu  */}
           <SidebarDropdownLink icon={ShoppingBag} title='Sales' links={salesLinks} />
 
-          <button className='flex items-center space-x-2 p-2'>
+          <button className='flex items-center p-2 space-x-2'>
             <ShoppingBasket className='w-4 h-4' />
             <span>Purchases</span>
           </button>
-          <Link href='/' className='flex items-center space-x-2 p-2'>
+          <Link href='/' className='flex items-center p-2 space-x-2'>
             <Cable className='w-4 h-4' />
             <span>Integrations</span>
           </Link>
-          <Link href='/' className='flex items-center space-x-2 p-2'>
+          <Link href='/' className='flex items-center p-2 space-x-2'>
             <BarChart4 className='w-4 h-4' />
             <span>Reports</span>
           </Link>
-          <Link href='/' className='flex items-center space-x-2 p-2'>
+          <Link href='/' className='flex items-center p-2 space-x-2'>
             <Files className='w-4 h-4' />
             <span>Documents</span>
           </Link>
@@ -133,7 +138,7 @@ const Sidebar = () => {
 
       { /* End  */}
       <div className="flex flex-col">
-        <button className='flex space-x-2 items-center bg-slate-950 p-3 justify-center'>
+        <button className='flex items-center justify-center p-3 space-x-2 bg-slate-950'>
           <ChevronLeft />
         </button>
       </div>

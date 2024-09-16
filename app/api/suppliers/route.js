@@ -4,14 +4,14 @@ import { NextResponse } from "next/server"
 
 export const POST = async(request)=>{
     try {
-        const { title, location, description, type } = await request.json()
-        const warehouse = await db.warehouse.create({
-            data: { title, location, description, type }
+        const { name, phone, email, address, contactPerson, taxID, supplierCode, paymentTerms, notes } = await request.json()
+        const supplier = await db.supplier.create({
+            data: { name, phone, email, address, contactPerson, taxID, supplierCode, paymentTerms, notes }
         })
         return NextResponse.json({
-            message:"Warehouse created successfully",
+            message:"Category created successfully",
             success:true,
-            warehouse
+            supplier
         })
 
     } catch (error) {
@@ -26,20 +26,20 @@ export const POST = async(request)=>{
 
 export const GET = async(request)=>{
     try {
-        const warehouses = await db.warehouse.findMany({
+        const suppliers = await db.supplier.findMany({
             orderBy:{
                 createdAt:"desc"
             }
         })
         return NextResponse.json({
-            message:"All the Warehouses fetched successfully",
+            message:"All the Suppliers fetched successfully",
             success:true,
-            warehouses
+            suppliers
         })
 
     } catch (error) {
         return NextResponse.json({
-            message: "Failed to fetch the warehouses",
+            message: "Failed to fetch the Suppliers",
             success:false,
             error
         },{

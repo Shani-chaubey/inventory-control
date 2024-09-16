@@ -11,12 +11,11 @@ const ImageInput = ({ className, label, imageUrl, setImageUrl, endpoint }) => {
         if(response.success){
             setImageUrl("")
             setImageKey("")
-            console.log("File Removed")
         }
     }
     return (
         <div className={className}>
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center justify-between mb-4">
                 <label
                     htmlFor="course-image"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -27,7 +26,7 @@ const ImageInput = ({ className, label, imageUrl, setImageUrl, endpoint }) => {
                     <button
                         onClick={removeImage}
                         type="button"
-                        className="flex space-x-2  bg-slate-900 rounded-md shadow text-slate-50  py-2 px-4"
+                        className="flex px-4 py-2 space-x-2 rounded-md shadow bg-slate-900 text-slate-50"
                     >
                         <Pencil className="w-5 h-5" />
                         <span>Change Image</span>
@@ -40,7 +39,7 @@ const ImageInput = ({ className, label, imageUrl, setImageUrl, endpoint }) => {
                     alt={label}
                     width={1000}
                     height={667}
-                    className="w-full h-64 object-cover"
+                    className="object-cover w-full h-64"
                 />
             ) : (
                 <UploadDropzone

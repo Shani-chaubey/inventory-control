@@ -22,3 +22,27 @@ export const POST = async(request)=>{
         })
     }
 }
+
+export const GET = async(request)=>{
+    try {
+        const units = await db.unit.findMany({
+            orderBy:{
+                createdAt:"desc"
+            }
+        })
+        return NextResponse.json({
+            message:"All the units fetched successfully",
+            success:true,
+            units
+        })
+
+    } catch (error) {
+        return NextResponse.json({
+            message: "Failed to fetch the units",
+            success:false,
+            error
+        },{
+            status:500
+        })
+    }
+}
