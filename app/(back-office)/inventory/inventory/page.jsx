@@ -65,7 +65,7 @@ const Inventory = () => {
 
   return (
     <div>
-      <FixedHeader newLink='/inventory/inventory/items/new' />
+      <FixedHeader title='All Items' newLink='/inventory/inventory/items/new' />
       <div className='grid grid-cols-1 gap-8 px-16 py-4 m-4 md:grid-cols-2 lg:grid-cols-3'>
         {
           itemCards.map((item, i)=>{

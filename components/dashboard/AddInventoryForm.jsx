@@ -7,7 +7,7 @@ import { makePostRequest } from '@/lib/apiRequest'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-const AddInventoryForm = () => {
+const AddInventoryForm = ({items, warehouses}) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
     const [loading, setLoading] = useState(false)
@@ -16,26 +16,6 @@ const AddInventoryForm = () => {
         makePostRequest( setLoading, '/api/adjustments/add', data, 'Stock Adjustment', reset )
     }
 
-    const branches = [
-        {
-            label: 'Branch 1',
-            value: '66e71f4217a048a7f489bc93'
-        },
-        {
-            label: 'Branch 2',
-            value: '66e7e664d65e17d8c66eeef6'
-        },
-    ]
-    const items = [
-        {
-            label: 'Item 1',
-            value: '66e7e664d65e17d8c66abef6'
-        },
-        {
-            label: 'Item 2',
-            value: '66e7e664d65e17d8c66abef6'
-        },
-    ]
 
     return (
 
@@ -48,7 +28,7 @@ const AddInventoryForm = () => {
                 
                 <TextInput label='Enter Quantity of Stock to Add' type='text'  name='addStockQty' placeholder='Enter Quantity of Stock to Add' className='w-full' register={register} errors={errors} />
                 
-                <SelectInput label='Receiver Warehouse' name='receivingWarehouseId' placeholder='Select Receiver Warehouse' className='w-full' options={branches} register={register} />
+                <SelectInput label='Receiver Warehouse' name='receivingWarehouseId' placeholder='Select Receiver Warehouse' className='w-full' options={warehouses} register={register} />
 
                 <TextAreaInput label='Inventory Notes' name='notes' placeholder='Any Inventory Notes' register={register} errors={errors} />
 

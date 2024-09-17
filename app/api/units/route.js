@@ -30,11 +30,7 @@ export const GET = async(request)=>{
                 createdAt:"desc"
             }
         })
-        return NextResponse.json({
-            message:"All the units fetched successfully",
-            success:true,
-            units
-        })
+        return NextResponse.json(units)
 
     } catch (error) {
         return NextResponse.json({

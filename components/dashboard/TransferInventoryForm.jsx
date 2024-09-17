@@ -7,7 +7,7 @@ import { makePostRequest } from '@/lib/apiRequest'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-const TransferInventoryForm = () => {
+const TransferInventoryForm = ({items, warehouses}) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
     const [loading, setLoading] = useState(false)
@@ -15,27 +15,6 @@ const TransferInventoryForm = () => {
     const onSubmit = async (data) => {
         makePostRequest( setLoading, '/api/adjustments/transfer', data, 'Stock Transferred', reset )
     }
-
-    const branches = [
-        {
-            label: 'Branch 1',
-            value: '66e71f4217a048a7f489bc93'
-        },
-        {
-            label: 'Branch 2',
-            value: '66e7e664d65e17d8c66eeef6'
-        },
-    ]
-    const items = [
-        {
-            label: 'Item 1',
-            value: '66e7e664d65e17d8c66abef6'
-        },
-        {
-            label: 'Item 2',
-            value: '66e7e664d65e17d8c66abef6'
-        },
-    ]
 
     return (
 
@@ -46,8 +25,8 @@ const TransferInventoryForm = () => {
 
                 <SelectInput label='Select the Item' name='itemId' placeholder='Select the Item which will be transferred' className='w-full' options={items} register={register} />
                 <TextInput label='Enter Quantity of Stocks to Transfer' name='transferStockQty' placeholder='Enter Quantity of Stocks to Transfer' className='w-full' register={register} errors={errors} />
-                <SelectInput label='The Warehouse that will give' name='givingWarehouseId' placeholder='Select The Warehouse that will give' className='w-full' options={branches} register={register} />
-                <SelectInput label='Receiver Warehouse' name='receivingWarehouseId' placeholder='Select Receiver Warehouse' className='w-full' options={branches} register={register} />
+                <SelectInput label='The Warehouse that will give' name='givingWarehouseId' placeholder='Select The Warehouse that will give' className='w-full' options={warehouses} register={register} />
+                <SelectInput label='Receiver Warehouse' name='receivingWarehouseId' placeholder='Select Receiver Warehouse' className='w-full' options={warehouses} register={register} />
 
                 <TextAreaInput label='Adjustments Notes' name='notes' placeholder='Any Adjustments Notes' register={register} errors={errors} />
 

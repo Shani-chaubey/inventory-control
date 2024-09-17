@@ -3,10 +3,10 @@ import React from 'react'
 
 const SearchInput = () => {
   return (
-    <form>
+    <form className='hidden sm:block'>
       <label className="sr-only">Search</label>
       <div className="relative w-full">
-        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <div className="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
           <Search className='w-4 h-4 text-gray-500 dark:text-gray-400' />
         </div>
         <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500

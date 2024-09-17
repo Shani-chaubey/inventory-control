@@ -31,11 +31,7 @@ export const GET = async(request)=>{
                 createdAt:"desc"
             }
         })
-        return NextResponse.json({
-            message:"All the Suppliers fetched successfully",
-            success:true,
-            suppliers
-        })
+        return NextResponse.json(suppliers)
 
     } catch (error) {
         return NextResponse.json({

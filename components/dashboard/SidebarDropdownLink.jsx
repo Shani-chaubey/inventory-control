@@ -7,11 +7,11 @@ import {
   import CollapsibleLink from './CollapsibleLink'
 import { ChevronsRight } from 'lucide-react'
 
-const SidebarDropdownLink = ({title, icon: Icon, links }) => {
+const SidebarDropdownLink = ({title, icon: Icon, links, setShowSideBar }) => {
     return (
         <Collapsible>
-            <CollapsibleTrigger className='w-full flex items-center justify-between'>
-                <div className='flex items-center space-x-2 p-2'>
+            <CollapsibleTrigger className='flex items-center justify-between w-full'>
+                <div className='flex items-center p-2 space-x-2'>
                     <Icon className='w-4 h-4' />
                     <span>{title}</span>
                 </div>
@@ -20,7 +20,7 @@ const SidebarDropdownLink = ({title, icon: Icon, links }) => {
             <CollapsibleContent>
                 {
                     links.map((item,index) => {
-                        return <CollapsibleLink item={item} key={index} />
+                        return <CollapsibleLink setShowSideBar={setShowSideBar} item={item} i={index} />
                     })
                 }
             </CollapsibleContent>

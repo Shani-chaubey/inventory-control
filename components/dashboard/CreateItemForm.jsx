@@ -8,6 +8,7 @@ import TextInput from '@/components/FormInputs/TextInput'
 import { makePostRequest } from '@/lib/apiRequest'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from "react-hot-toast"
 
 const CreateItemForm = ({ categories, units, brands, warehouses, suppliers }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
@@ -16,8 +17,13 @@ const CreateItemForm = ({ categories, units, brands, warehouses, suppliers }) =>
   const [imageUrl, setImageUrl] = useState('')
 
   const onSubmit = async(data) => {
+    if(imageUrl===""){
+      toast.error("Please Upload an image of Item")
+      return
+    }
     data.imageUrl = imageUrl
     makePostRequest( setLoading, '/api/items', data, 'Item', reset )
+    setImageUrl("")
   }
 
   return (
@@ -25,7 +31,7 @@ const CreateItemForm = ({ categories, units, brands, warehouses, suppliers }) =>
       <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-4xl p-4 mx-auto my-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700'>
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
-          <TextInput label='Item Name' name='title' placeholder='Enter Item name' className='w-full' register={register} errors={errors} />
+          <TextInput label='Item Name' name='title' placeholder='Enter Item name' register={register} errors={errors} />
 
           <SelectInput label='Category Type' name='categoryId' placeholder='Please Choose a Item Category' className='w-full' options={categories} register={register} />
 
@@ -45,15 +51,15 @@ const CreateItemForm = ({ categories, units, brands, warehouses, suppliers }) =>
 
           <TextInput label='Selling Price of the Item' type='number' name='sellingPrice' placeholder='Selling Price of the Item' className='w-full' register={register} errors={errors} />
 
-          <SelectInput label='Select Warehouse' name='warehouse' placeholder='Please Choose a warehouse' className='w-full' options={warehouses} register={register} />
+          <SelectInput label='Select Warehouse' name='warehouseId' placeholder='Please Choose a warehouse' className='w-full' options={warehouses} register={register} />
           
-          <SelectInput label='Select Supplier' name='supplier' placeholder='Please Choose a Supplier' className='w-full' options={suppliers} register={register} />
+          <SelectInput label='Select Supplier' name='supplierId' placeholder='Please Choose a Supplier' className='w-full' options={suppliers} register={register} />
 
           <TextInput label='Item Weight in Kgs' type='number' name='weight' placeholder='Item Weight in Kgs' className='w-full' register={register} errors={errors} />
 
           <TextInput label='Item Dimensions in cm' name='dimensions' placeholder='Item Dimensions in cm (eg: 20 x 40)' className='w-full' register={register} errors={errors} />
 
-          <TextInput label='Item Tax in %' type='number' name='texRate' placeholder='Item Tax Rate' className='w-full' register={register} errors={errors} />
+          <TextInput label='Item Tax in %' type='number' name='taxRate' placeholder='Item Tax Rate' className='w-full' register={register} errors={errors} />
 
           <TextAreaInput label='Item Description' name='description' placeholder='Item Description' register={register} errors={errors} />
 

@@ -1,45 +1,54 @@
-import { BaggageClaim, BarChart4, Cable, ChevronLeft, Files, Home, ShoppingBag, ShoppingBasket, ShoppingCart } from 'lucide-react'
+import { BaggageClaim, BarChart4, Cable, ChevronLeft, Files, Home, ShoppingBag, ShoppingBasket, ShoppingCart, X } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import SubscriptionCard from './SubscriptionCard'
 import SidebarDropdownLink from './SidebarDropdownLink'
 
 
-const Sidebar = () => {
+const Sidebar = ({ showSideBar, setShowSideBar, sidebarRef }) => {
+  const closeSidebar = ()=>{
+    setShowSideBar(false)
+  }
+
   const inventoryLinks = [
     {
-      title: 'Items',
+      title: 'All',
       href: '/inventory/inventory',
+      newItemHref: '/inventory/inventory'
+    },
+    {
+      title: 'Items',
+      href: '/inventory/inventory/items',
       newItemHref: '/inventory/inventory/items/new'
     },
     {
       title: 'Categories',
-      href: '/inventory/inventory',
+      href: '/inventory/inventory/categories',
       newItemHref: '/inventory/inventory/categories/new'
     },
     {
       title: 'Brands',
-      href: '/inventory/inventory',
+      href: '/inventory/inventory/brands',
       newItemHref: '/inventory/inventory/brands/new'
     },
     {
       title: 'Units',
-      href: '/inventory/inventory',
+      href: '/inventory/inventory/units',
       newItemHref: '/inventory/inventory/units/new'
     },
     {
       title: 'Warehouses',
-      href: '/inventory/inventory',
+      href: '/inventory/inventory/warehouse',
       newItemHref: '/inventory/inventory/warehouse/new'
     },
     {
       title: 'Suppliers',
-      href: '/inventory/inventory',
+      href: '/inventory/inventory/suppliers',
       newItemHref: '/inventory/inventory/suppliers/new'
     },
     {
       title: 'Inventory Adjustments',
-      href: '/inventory/inventory',
+      href: '/inventory/inventory/adjustments',
       newItemHref: '/inventory/inventory/adjustments/new'
     }
   ]
@@ -91,14 +100,18 @@ const Sidebar = () => {
     },
   ]
   return (
-    <div className='fixed flex flex-col justify-between min-h-screen w-60 bg-slate-900 text-slate-50'>
+    <div  ref={sidebarRef} className={`${showSideBar ? "fixed flex-col justify-between min-h-screen w-60 bg-slate-900 text-slate-50 z-50" : "fixed flex-col justify-between hidden min-h-screen w-60 bg-slate-900 text-slate-50 lg:flex z-50"}`}>
       <div className="flex flex-col">
 
         { /* Logo  */}
-        <Link href='/' className='flex items-center p-3 space-x-2 bg-slate-950'>
-          <ShoppingCart />
-          <span className='text-xl font-bold'>Inventory</span>
-        </Link>
+        <div className='flex items-center justify-between p-3 space-x-2 bg-slate-950'>
+          <Link href='/' className='flex'>
+            <ShoppingCart />
+            <span className='text-xl font-bold'>Inventory</span>
+          </Link>
+          <button onClick={closeSidebar}><X className='w-6 h-6 text-white lg:hidden' /></button>
+        </div>
+
 
         { /* Sidebar links  */}
         <nav className='flex flex-col gap-3 px-4 py-6'>
@@ -108,7 +121,7 @@ const Sidebar = () => {
           </Link>
 
           { /* Inventory Menu  */}
-          <SidebarDropdownLink icon={BaggageClaim} title='Inventory' links={inventoryLinks} />
+          <SidebarDropdownLink icon={BaggageClaim} title='Inventory' links={inventoryLinks} setShowSideBar={setShowSideBar} />
 
           { /* Sales Menu  */}
           <SidebarDropdownLink icon={ShoppingBag} title='Sales' links={salesLinks} />

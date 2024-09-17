@@ -2,12 +2,12 @@ import { ChevronDown, HelpCircle, LayoutGrid, List, MoreHorizontal, Plus } from 
 import Link from 'next/link'
 import React from 'react'
 
-const FixedHeader = ({ newLink }) => {
+const FixedHeader = ({ title, newLink }) => {
     return (
-        <div className='flex justify-between items-center p-8 bg-white '>
+        <div className='flex items-center justify-between p-8 bg-white '>
 
-            <button className='flex space-x-1 items-center'>
-                <span className='text-2xl font-semibold'>All Items</span>
+            <button className='flex items-center space-x-1'>
+                <span className='text-2xl font-semibold'>{title}</span>
                 <ChevronDown className='w-4 h-4' />
             </button>
 
@@ -15,23 +15,23 @@ const FixedHeader = ({ newLink }) => {
 
                 {/* New */}
                 <div className=''>
-                    <Link href={newLink} className='bg-blue-600 rounded-md flex items-center space-x-2 px-3 py-1 '>
-                        <Plus className='text-slate-50 w-4 h-4 ' />
+                    <Link href={newLink} className='flex items-center px-3 py-1 space-x-2 bg-blue-600 rounded-md '>
+                        <Plus className='w-4 h-4 text-slate-50 ' />
                         <span className='text-slate-50'>New</span>
                     </Link>
                 </div>
 
                 {/* Layout */}
-                <div className='flex border border-gray-400 rounded-md overflow-hidden'>
-                    <button className='border-r border-gray-700 bg-gray-300 p-2'><List className='w-4 h-4' /></button>
+                <div className='hidden overflow-hidden border border-gray-400 rounded-md sm:flex'>
+                    <button className='p-2 bg-gray-300 border-r border-gray-700'><List className='w-4 h-4' /></button>
                     <button className='p-2'><LayoutGrid className='w-4 h-4' /></button>
                 </div>
 
                 {/* More */}
-                <button className='bg-gray-100 p-2 rounded-md'><MoreHorizontal className='w-4 h-4' /></button>
+                <button className='hidden p-2 bg-gray-100 rounded-md sm:block'><MoreHorizontal className='w-4 h-4' /></button>
 
                 {/* Help */}
-                <button className='bg-orange-600 p-2 rounded-md text-white'><HelpCircle className='w-4 h-4' /></button>
+                <button className='hidden p-2 text-white bg-orange-600 rounded-md sm:block'><HelpCircle className='w-4 h-4' /></button>
 
             </div>
         </div>

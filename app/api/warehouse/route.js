@@ -29,13 +29,9 @@ export const GET = async(request)=>{
         const warehouses = await db.warehouse.findMany({
             orderBy:{
                 createdAt:"desc"
-            }
+            },
         })
-        return NextResponse.json({
-            message:"All the Warehouses fetched successfully",
-            success:true,
-            warehouses
-        })
+        return NextResponse.json(warehouses)
 
     } catch (error) {
         return NextResponse.json({

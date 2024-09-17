@@ -14,7 +14,7 @@ export default function SelectInput({ label, name, placeholder, register, classN
           {options.map((option, i) => {
             return (
               <option key={i} value={option.id}>
-                {option.title}
+                {option.title ? option.title : option.name}
               </option>
             );
           })}
