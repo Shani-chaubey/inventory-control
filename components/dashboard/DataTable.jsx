@@ -1,7 +1,8 @@
-import { Pencil, Trash2 } from "lucide-react"
-import Link from "next/link"
+import { Pencil, Trash2 } from "lucide-react";
+import Link from "next/link";
+import DeleteBtn from "./DeleteBtn";
 
-const DataTable = ({ data=[], columns=[] }) => {
+const DataTable = ({ data = [], columns = [], pathname = "" }) => {
     return (
         <div>
             <div className="relative overflow-x-auto rounded-lg shadow-md">
@@ -28,22 +29,34 @@ const DataTable = ({ data=[], columns=[] }) => {
                                 return (
                                     <tr key={index} className="border-b odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700">
 
-                                        {
-                                            columns.map((col, index) => {
-                                                return (
-                                                    <td key={index} className="px-6 py-4">
-                                                        {item[col]}
-                                                    </td>
-                                                )
-                                            })
-                                        }
+                                        {columns.map((columnName, i) => (
+                                            <td key={i} className="px-6 py-4">
+                                                {columnName.includes(".") ? (
+                                                    // If the column name contains a dot, it's a nested object
+                                                    // Access the nested key using reduce
+                                                    columnName.split(".").reduce((obj, key) => obj[key], item)
+                                                ) : columnName === "createdAt" ||
+                                                    columnName === "updatedAt" ? (
+                                                    // Convert date columns to a more readable format
+                                                    new Date(item[columnName]).toLocaleDateString()
+                                                ) : columnName === "imageUrl" ? (
+                                                    // Special handling for imageUrl to render an image
+                                                    <img
+                                                        src={item[columnName]}
+                                                        alt={item.title}
+                                                        className="w-10 h-10 object-cover rounded-full"
+                                                    />
+                                                ) : (
+                                                    // Otherwise, display the value as is
+                                                    item[columnName]
+                                                )}
+                                            </td>
+                                        ))}
                                         <td className="flex items-center px-6 py-4 space-x-4">
-                                            <Link href="#" className="flex items-center space-x-1 font-medium text-blue-600">
+                                            <Link href={`/inventory/inventory/${pathname}/${item.id}`} className="flex items-center space-x-1 font-medium text-blue-600">
                                                 <span>Edit</span><Pencil className="w-4 h-4" />
                                             </Link>
-                                            <button className="flex items-center space-x-1 font-medium text-red-600">
-                                                <span>Delete</span><Trash2 className="w-4 h-4" />
-                                            </button>
+                                            <DeleteBtn pathname={pathname} id={item.id} />
                                         </td>
                                     </tr>
 

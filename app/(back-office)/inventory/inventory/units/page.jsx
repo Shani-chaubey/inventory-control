@@ -8,19 +8,13 @@ const Units = async() => {
 
   const columnsdHeadings = ["title","abbreviation"]
 
-  const data = units.map((item)=>{
-    return {
-      title:  item.title,
-      abbreviation: item.abbreviation,
-    }
-  })
   
   return (
     <div>
       <FixedHeader title="All Units" newLink='/inventory/inventory/units/new' />
 
       <div className="px-12 py-8">
-        <DataTable data={data} columns={columnsdHeadings} />
+        <DataTable data={units} columns={columnsdHeadings} pathname="/units" />
       </div>
 
     </div>

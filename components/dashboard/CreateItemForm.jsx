@@ -5,16 +5,24 @@ import SelectInput from '@/components/FormInputs/SelectInput'
 import SubmitButton from '@/components/FormInputs/SubmitButton'
 import TextAreaInput from '@/components/FormInputs/TextAreaInput'
 import TextInput from '@/components/FormInputs/TextInput'
-import { makePostRequest } from '@/lib/apiRequest'
+import { makePostRequest, makePutRequest } from '@/lib/apiRequest'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form' 
 import toast from "react-hot-toast"
+import { useRouter } from 'next/navigation'
 
-const CreateItemForm = ({ categories, units, brands, warehouses, suppliers }) => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+const CreateItemForm = ({ categories, units, brands, warehouses, suppliers, initialData, isUpdated }) => {
+  const router = useRouter();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    defaultValues: initialData
+  })
 
   const [loading, setLoading] = useState(false)
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrl, setImageUrl] = useState(initialData.imageUrl)
+
+  const redirect = ()=>{
+    router.push('/inventory/inventory/items')
+ }
 
   const onSubmit = async(data) => {
     if(imageUrl===""){
@@ -22,8 +30,12 @@ const CreateItemForm = ({ categories, units, brands, warehouses, suppliers }) =>
       return
     }
     data.imageUrl = imageUrl
-    makePostRequest( setLoading, '/api/items', data, 'Item', reset )
-    setImageUrl("")
+    if(isUpdated){
+      makePutRequest( setLoading, `/api/items/${initialData.id}`, data, 'Item', redirect )
+    }else{
+      makePostRequest( setLoading, '/api/items', data, 'Item', reset )
+      setImageUrl("")
+    }
   }
 
   return (

@@ -2,7 +2,7 @@ import FormHeader from '@/components/dashboard/FormHeader'
 import CreateItemForm from '@/components/dashboard/CreateItemForm'
 import { getData } from '@/lib/apiRequest'
 
-const NewItem = async() => {
+const NewItem = async({initialData = {}, isUpdated=false}) => {
   
   const categoriesData = getData("/api/categories")
   const unitsData = getData("/api/units")
@@ -14,8 +14,8 @@ const NewItem = async() => {
 
   return (
     <div>
-      <FormHeader title='Create New Item' href='/inventory/inventory/items' />
-      <CreateItemForm categories={categories} units={units} brands={brands} warehouses={warehouses} suppliers={suppliers} />
+      <FormHeader title={`${isUpdated ? `Update Item "${initialData.title}"` : "Create New Item" } `} href='/inventory/inventory/items' />
+      <CreateItemForm categories={categories} units={units} brands={brands} warehouses={warehouses} suppliers={suppliers} initialData={initialData} isUpdated={isUpdated}/>
     </div>
   )
 }

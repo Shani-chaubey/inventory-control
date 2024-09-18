@@ -6,20 +6,15 @@ const Brands = async() => {
 
   const brands = await getData('/api/brands')
   
-  const columnsdHeadings = ["title"]
+  const columnsdHeadings = ["title","createdAt","updatedAt"]
 
-  const data = brands.map((item)=>{
-    return {
-      title: item.title,
-    }
-  })
 
   return (
     <div>
       <FixedHeader title="All Brands" newLink='/inventory/inventory/brands/new' />
 
       <div className="px-12 py-8">
-        <DataTable data={data} columns={columnsdHeadings} />
+        <DataTable data={brands} columns={columnsdHeadings} pathname="/brands" />
       </div>
 
     </div>

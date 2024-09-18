@@ -8,20 +8,12 @@ const Suppliers = async() => {
 
   const columnsdHeadings = ["name","email","phone"]
 
-  const data = suppliers.map((item)=>{
-    return {
-      name:  item.name,
-      email: item.email,
-      phone: item.phone,
-    }
-  })
-  
   return (
     <div>
       <FixedHeader title="All Suppliers" newLink='/inventory/inventory/suppliers/new' />
 
       <div className="px-12 py-8">
-        <DataTable data={data} columns={columnsdHeadings} />
+        <DataTable data={suppliers} columns={columnsdHeadings} pathname="/suppliers" />
       </div>
 
     </div>
