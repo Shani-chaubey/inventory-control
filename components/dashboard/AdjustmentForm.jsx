@@ -5,7 +5,7 @@ import TransferInventoryForm from '@/components/dashboard/TransferInventoryForm'
 import { Minus, Plus } from 'lucide-react'
 import { useState } from 'react'
 
-const AdjustmentForm = ({items, warehouses}) => {
+const AdjustmentForm = ({items, warehouses, suppliers}) => {
   const [activeForm, setActiveForm] = useState("add")
   const tabs = [
     {
@@ -45,7 +45,7 @@ const AdjustmentForm = ({items, warehouses}) => {
         </ul>
       </div>
       {
-        activeForm === 'add' && <AddInventoryForm items={items} warehouses={warehouses} /> 
+        activeForm === 'add' && <AddInventoryForm items={items} warehouses={warehouses} suppliers={suppliers} /> 
       }
       {
         activeForm === 'transfer' && <TransferInventoryForm items={items} warehouses={warehouses} />

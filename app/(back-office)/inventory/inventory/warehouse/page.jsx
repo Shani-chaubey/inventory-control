@@ -6,7 +6,7 @@ const Warehouses = async() => {
 
   const warehouses = await getData('/api/warehouse')
 
-  const columnsdHeadings = ["title","location","type"]
+  const columnsdHeadings = ["title","location","type","stockQty"]
 
  
   

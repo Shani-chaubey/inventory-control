@@ -6,6 +6,13 @@ export const POST = async(request)=>{
     try {
         const { title, categoryId, sku, barcode, qty, unitId, brandId, reOrderPoint,
              buyingPrice, sellingPrice, warehouseId, supplierId, weight, dimensions, taxRate, description, notes, imageUrl } = await request.json()
+
+        await db.Warehouse.update({
+                where: { id: warehouseId },
+                data: { stockQty: { increment: parseInt(qty) } }
+        })
+
+
         const item = await db.Item.create({
             data: { title, 
                 categoryId, 

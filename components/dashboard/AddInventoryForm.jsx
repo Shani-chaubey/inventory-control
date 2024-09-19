@@ -7,7 +7,7 @@ import { makePostRequest } from '@/lib/apiRequest'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-const AddInventoryForm = ({items, warehouses}) => {
+const AddInventoryForm = ({items, warehouses, suppliers}) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
     const [loading, setLoading] = useState(false)
@@ -26,9 +26,11 @@ const AddInventoryForm = ({items, warehouses}) => {
                 
                 <SelectInput label='Select the Item' name='itemId' placeholder='Select the Item whic will be added' className='w-full' options={items} register={register} />
                 
-                <TextInput label='Enter Quantity of Stock to Add' type='text'  name='addStockQty' placeholder='Enter Quantity of Stock to Add' className='w-full' register={register} errors={errors} />
+                <TextInput label='Enter Quantity of Stock to Add' type='text'  name='addStockQty' placeholder='Enter Quantity of Stock to Add' register={register} errors={errors} />
                 
                 <SelectInput label='Receiver Warehouse' name='receivingWarehouseId' placeholder='Select Receiver Warehouse' className='w-full' options={warehouses} register={register} />
+                
+                <SelectInput label='Supplier of the Item' name='supplierId' placeholder='Select Supplier of the Item' className='w-full' options={suppliers} register={register} />
 
                 <TextAreaInput label='Inventory Notes' name='notes' placeholder='Any Inventory Notes' register={register} errors={errors} />
 

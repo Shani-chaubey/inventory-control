@@ -6,7 +6,7 @@ const Items = async() => {
 
   const items = await getData('/api/items')
   
-  const columnsdHeadings = ["imageUrl","title","brand.title","category.title"]
+  const columnsdHeadings = ["imageUrl","title","qty","brand.title","category.title"]
 
   return (
     <div>

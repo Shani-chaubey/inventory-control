@@ -8,30 +8,11 @@ const Adjustments = async () => {
   const transferAdjustmentsData = getData('/api/adjustments/transfer')
 
   const [ addAdjustments, transferAdjustments ] = await Promise.all([ addAdjustmentsData, transferAdjustmentsData ])
+  
+  const columnsdHeadingsAddAdjustments = ["referenceNumber", "item.title", "addStockQty", "warehouse.title"]
 
-  const columnsdHeadingsAddAdjustments = ["referenceNumber", "item", "transferStockQty", "receivingWarehouse"]
+  const columnsdHeadingsTransferAdjustments = ["referenceNumber", "item.title", "transferStockQty", "givingWarehouse.title", "receivingWarehouse.title"]
 
-  const dataAddAdjustment = addAdjustments.map((adjust) => {
-    return {
-      referenceNumber: adjust.referenceNumber,
-      item: adjust.item.title,
-      transferStockQty: adjust.addStockQty,
-      receivingWarehouse: adjust.warehouse.title
-    }
-  })
-
-
-  const columnsdHeadingsTransferAdjustments = ["referenceNumber", "item", "transferStockQty", "givingWarehouse", "receivingWarehouse"]
-
-  const dataTransferAdjustment = transferAdjustments.map((adjust) => {
-    return {
-      referenceNumber: adjust.referenceNumber,
-      item: adjust.item.title,
-      transferStockQty: adjust.transferStockQty,
-      givingWarehouse: adjust.givingWarehouse.title,
-      receivingWarehouse: adjust.receivingWarehouse.title
-    }
-  })
 
   return (
     <div>
@@ -39,12 +20,12 @@ const Adjustments = async () => {
 
       <div className="px-12 py-8">
         <h2 className="py-4 text-xl font-semibold">Stock Increments Adjustments</h2>
-        <DataTable data={dataAddAdjustment} columns={columnsdHeadingsAddAdjustments} />
+        <DataTable data={addAdjustments} columns={columnsdHeadingsAddAdjustments} pathname='adjustments/add'/>
       </div>
 
       <div className="px-12 py-8">
         <h2 className="py-4 text-xl font-semibold">Transfer Stocks Adjustments</h2>
-        <DataTable data={dataTransferAdjustment} columns={columnsdHeadingsTransferAdjustments} />
+        <DataTable data={transferAdjustments} columns={columnsdHeadingsTransferAdjustments} pathname='adjustments/transfer'/>
       </div>
 
     </div>

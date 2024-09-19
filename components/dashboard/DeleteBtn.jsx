@@ -2,6 +2,7 @@
 import { Trash2 } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
 const DeleteBtn = ({ pathname, id }) => {
@@ -26,19 +27,11 @@ const DeleteBtn = ({ pathname, id }) => {
                 });
                 if (res.ok) {
                     const data = await res.json()
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: data.message,
-                        icon: "success"
-                    });
+                    toast.success(data.message)
                     router.refresh();
                     setLoading(false)
                 } else {
-                    Swal.fire({
-                        title: "Unable to Delete!",
-                        text: "Your resource has not been deleted.",
-                        icon: "error"
-                    });
+                    toast.error("Unable to delete")
                     setLoading(false)
                 }
             }else{

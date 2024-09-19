@@ -5,11 +5,11 @@ const NewAdjustment = async() => {
 
   const warehousesData = getData("/api/warehouse")
   const itemsData = getData("/api/items")
-
-  const [ items, warehouses ] = await Promise.all([itemsData, warehousesData ])
+  const suppliersData = getData("/api/suppliers")
+  const [ items, warehouses, suppliers ] = await Promise.all([itemsData, warehousesData, suppliersData ])
 
   return (
-    <AdjustmentForm items={items} warehouses={warehouses} />
+    <AdjustmentForm items={items} warehouses={warehouses} suppliers={suppliers} />
   )
 }
 

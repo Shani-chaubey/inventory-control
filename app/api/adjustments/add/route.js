@@ -4,10 +4,22 @@ import { NextResponse } from "next/server"
 
 export const POST = async(request)=>{
     try {
-        const { referenceNumber, addStockQty, receivingWarehouseId, notes, itemId } = await request.json()
-        const adjustments = await db.AddStockAdjustment.create({
-            data: { referenceNumber, addStockQty: parseInt(addStockQty), receivingWarehouseId, notes, itemId }
+        const { referenceNumber, addStockQty, receivingWarehouseId, notes, itemId, supplierId } = await request.json()
+        
+        await db.item.update({
+            where: { id: itemId },
+            data: { qty: { increment: parseInt(addStockQty) } }
         })
+        
+        await db.Warehouse.update({
+            where: { id: receivingWarehouseId },
+            data: { stockQty: { increment: parseInt(addStockQty) } }
+        })
+         
+        const adjustments = await db.AddStockAdjustment.create({
+            data: { referenceNumber, addStockQty: parseInt(addStockQty), receivingWarehouseId, notes, itemId, supplierId }
+        })
+        
         return NextResponse.json(adjustments)
 
     } catch (error) {

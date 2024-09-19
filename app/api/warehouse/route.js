@@ -6,7 +6,9 @@ export const POST = async(request)=>{
     try {
         const { title, location, description, type } = await request.json()
         const warehouse = await db.warehouse.create({
-            data: { title, location, description, type }
+            data: { title, location, description, type,
+                stockQty: 0
+             }
         })
         return NextResponse.json({
             message:"Warehouse created successfully",

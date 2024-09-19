@@ -48,16 +48,16 @@ const SalesOverview = () => {
     ]
 
     return (
-        <div className='bg-blue-50 border-b border-slate-300 grid grid-cols-12 text gap-4'>
+        <div className='grid grid-cols-12 gap-4 border-b bg-blue-50 border-slate-300 text'>
 
             {/* Sales Activity  */}
-            <div className='col-span-8 border-r border-slate-300 p-8'>
+            <div className='p-8 border-r lg:col-span-8 col-span-full border-slate-300'>
                 <h2 className='mb-6 text-xl'>Sales Activity</h2>
-                <div className='grid grid-cols-4 gap-4 pr-8'>
+                <div className='grid grid-cols-1 gap-4 pr-8 md:grid-cols-2 lg:grid-cols-4'>
                     {
                         salesActivity.map((item, index) => {
                             return (
-                                <SalesActivityCard href={item.href} itemKey={index} color={item.color} qty={item.qty} status={item.status} unit={item.unit}/>
+                                <SalesActivityCard href={item.href} itemKey={index} color={item.color} qty={item.qty} status={item.status} unit={item.unit} />
                             )
                         })
                     }
@@ -65,7 +65,7 @@ const SalesOverview = () => {
             </div>
 
             {/* Inventory Summary  */}
-            <div className='col-span-4 p-8'>
+            <div className='p-8 col-span-full lg:col-span-4'>
                 <h2 className='mb-6 text-xl'>Inventory Summary</h2>
                 <div>
                     {
