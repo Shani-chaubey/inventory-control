@@ -5,7 +5,7 @@ import {
     CollapsibleTrigger,
   } from "@/components/ui/collapsible"
   import CollapsibleLink from './CollapsibleLink'
-import { ChevronsRight } from 'lucide-react'
+import { ChevronsDown } from 'lucide-react'
 
 const SidebarDropdownLink = ({title, icon: Icon, links, setShowSideBar }) => {
     return (
@@ -15,7 +15,7 @@ const SidebarDropdownLink = ({title, icon: Icon, links, setShowSideBar }) => {
                     <Icon className='w-4 h-4' />
                     <span>{title}</span>
                 </div>
-                <ChevronsRight className='w-4 h-4' />
+                <ChevronsDown className='w-4 h-4' />
             </CollapsibleTrigger>
             <CollapsibleContent>
                 {

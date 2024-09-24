@@ -1,12 +1,13 @@
 "use client"
 import { Users } from 'lucide-react'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 
 const HomeNavbar = () => {
     const pathname = usePathname()
-    
+    const { data: session } = useSession()
     const navLinks = [
         {
             title: "Dashboard",
@@ -32,8 +33,8 @@ const HomeNavbar = () => {
                     <Users className='text-slate-400'/>
                 </div>
                 <div className='flex flex-col'>
-                    <p className='font-semibold text-slate-900'>Hello, Himanshu</p>
-                    <span className='text-sm'>Demo Org</span>
+                    <p className='font-semibold text-slate-900'>Hello {session?.user?.name ? session?.user?.name : "Demo"}</p>
+                    <span className='text-sm'>{session?.user?.email}</span>
                 </div>
             </div>
             <nav className='sticky flex mt-6 space-x-4 overflow-x-auto text-nowrap'>

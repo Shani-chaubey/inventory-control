@@ -1,13 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals.push('_http_common');
-    }
-    return config;
-  },
-  reactStrictMode: false,
-  images: {
+    reactStrictMode: false,
+    images: {
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,6 +10,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'utfs.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
       },
     ],
   },

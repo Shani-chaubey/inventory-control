@@ -20,10 +20,11 @@ const NewUnit = ({initialData = {}, isUpdated=false}) => {
    }
 
   const onSubmit = async(data) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if(isUpdated){
-      makePutRequest( setLoading, `/api/units/${initialData.id}`, data, 'Unit', redirect )
+      makePutRequest( setLoading, `${baseUrl}/api/units/${initialData.id}`, data, 'Unit', redirect )
     }else{
-      makePostRequest( setLoading, '/api/units', data, 'Unit', reset )
+      makePostRequest( setLoading, `${baseUrl}/api/units`, data, 'Unit', reset )
     }
   }
 

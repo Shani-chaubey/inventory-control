@@ -25,15 +25,16 @@ const CreateItemForm = ({ categories, units, brands, warehouses, suppliers, init
  }
 
   const onSubmit = async(data) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if(imageUrl===""){
       toast.error("Please Upload an image of Item")
       return
     }
     data.imageUrl = imageUrl
     if(isUpdated){
-      makePutRequest( setLoading, `/api/items/${initialData.id}`, data, 'Item', redirect )
+      makePutRequest( setLoading, `${baseUrl}/api/items/${initialData.id}`, data, 'Item', redirect )
     }else{
-      makePostRequest( setLoading, '/api/items', data, 'Item', reset )
+      makePostRequest( setLoading, `${baseUrl}/api/items`, data, 'Item', reset )
       setImageUrl("")
     }
   }

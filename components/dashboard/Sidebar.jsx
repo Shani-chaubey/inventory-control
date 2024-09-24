@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import SubscriptionCard from './SubscriptionCard'
 import SidebarDropdownLink from './SidebarDropdownLink'
+import { inventoryLinks, salesLinks } from '@/JSON/sidebarLinks'
 
 
 const Sidebar = ({ showSideBar, setShowSideBar, sidebarRef }) => {
@@ -10,95 +11,8 @@ const Sidebar = ({ showSideBar, setShowSideBar, sidebarRef }) => {
     setShowSideBar(false)
   }
 
-  const inventoryLinks = [
-    {
-      title: 'All',
-      href: '/inventory/inventory',
-      newItemHref: '/inventory/inventory'
-    },
-    {
-      title: 'Items',
-      href: '/inventory/inventory/items',
-      newItemHref: '/inventory/inventory/items/new'
-    },
-    {
-      title: 'Categories',
-      href: '/inventory/inventory/categories',
-      newItemHref: '/inventory/inventory/categories/new'
-    },
-    {
-      title: 'Brands',
-      href: '/inventory/inventory/brands',
-      newItemHref: '/inventory/inventory/brands/new'
-    },
-    {
-      title: 'Units',
-      href: '/inventory/inventory/units',
-      newItemHref: '/inventory/inventory/units/new'
-    },
-    {
-      title: 'Warehouses',
-      href: '/inventory/inventory/warehouse',
-      newItemHref: '/inventory/inventory/warehouse/new'
-    },
-    {
-      title: 'Suppliers',
-      href: '/inventory/inventory/suppliers',
-      newItemHref: '/inventory/inventory/suppliers/new'
-    },
-    {
-      title: 'Inventory Adjustments',
-      href: '/inventory/inventory/adjustments',
-      newItemHref: '/inventory/inventory/adjustments/new'
-    }
-  ]
-  const salesLinks = [
-    {
-      title: 'Customers',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Sales Orders',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Packages',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Shipments',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Invoices',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Sales Receipts',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Payment received',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Sales returns',
-      href: '/',
-      newItemHref: '/'
-    },
-    {
-      title: 'Credit Notes',
-      href: '/',
-      newItemHref: '/'
-    },
-  ]
+  const inventoryLinksData = inventoryLinks;
+  const salesLinksData = salesLinks;
   return (
     <div  ref={sidebarRef} className={`${showSideBar ? "fixed flex-col justify-between min-h-screen w-60 bg-slate-900 text-slate-50 z-50" : "fixed flex-col justify-between hidden min-h-screen w-60 bg-slate-900 text-slate-50 lg:flex z-50"}`}>
       <div className="flex flex-col">
@@ -121,10 +35,10 @@ const Sidebar = ({ showSideBar, setShowSideBar, sidebarRef }) => {
           </Link>
 
           { /* Inventory Menu  */}
-          <SidebarDropdownLink icon={BaggageClaim} title='Inventory' links={inventoryLinks} setShowSideBar={setShowSideBar} />
+          <SidebarDropdownLink icon={BaggageClaim} title='Inventory' links={inventoryLinksData} setShowSideBar={setShowSideBar} />
 
           { /* Sales Menu  */}
-          <SidebarDropdownLink icon={ShoppingBag} title='Sales' links={salesLinks} />
+          <SidebarDropdownLink icon={ShoppingBag} title='Sales' links={salesLinksData} />
 
           <button className='flex items-center p-2 space-x-2'>
             <ShoppingBasket className='w-4 h-4' />

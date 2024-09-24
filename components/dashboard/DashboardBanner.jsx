@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 const DashboardBanner = () => {
     const [hidden, setHidden] = useState(false)
-    console.log(hidden)
     return (
         <>
             {

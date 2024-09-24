@@ -21,10 +21,11 @@ const NewCategory = ({initialData = {}, isUpdated=false}) => {
    }
 
   const onSubmit = async(data) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if(isUpdated){
-      makePutRequest( setLoading, `/api/categories/${initialData.id}`, data, 'Category', redirect )
+      makePutRequest( setLoading, `${baseUrl}/api/categories/${initialData.id}`, data, 'Category', redirect )
     }else{
-      makePostRequest( setLoading, '/api/categories', data, 'Category', reset )
+      makePostRequest( setLoading, `${baseUrl}/api/categories`, data, 'Category', reset )
     }
   }
   return (

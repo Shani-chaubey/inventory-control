@@ -22,10 +22,11 @@ const NewWarehouse = ({initialData = {}, isUpdated=false}) => {
    }
 
   const onSubmit = async(data) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if(isUpdated){
-      makePutRequest( setLoading, `/api/warehouse/${initialData.id}`, data, 'Warehouse', redirect )
+      makePutRequest( setLoading, `${baseUrl}/api/warehouse/${initialData.id}`, data, 'Warehouse', redirect )
     }else{
-      makePostRequest( setLoading, '/api/warehouse', data, 'Warehouse', reset )
+      makePostRequest( setLoading, `${baseUrl}/api/warehouse`, data, 'Warehouse', reset )
     }
   }
 

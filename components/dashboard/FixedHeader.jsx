@@ -8,7 +8,7 @@ const FixedHeader = ({ title, newLink }) => {
 
             <button className='flex items-center space-x-1'>
                 <span className='text-2xl font-semibold'>{title}</span>
-                <ChevronDown className='w-4 h-4' />
+                
             </button>
 
             <div className='flex gap-4'>

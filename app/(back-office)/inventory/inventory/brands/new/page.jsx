@@ -21,10 +21,11 @@ const NewBrand = ({initialData = {}, isUpdated=false}) => {
    }
 
   const onSubmit = async(data) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if(isUpdated){
-      makePutRequest( setLoading, `/api/brands/${initialData.id}`, data, 'Brand', redirect )
+      makePutRequest( setLoading, `${baseUrl}/api/brands/${initialData.id}`, data, 'Brand', redirect )
     }else{
-      makePostRequest( setLoading, '/api/brands', data, 'Brand', reset )
+      makePostRequest( setLoading, `${baseUrl}/api/brands`, data, 'Brand', reset )
     }
   }
 

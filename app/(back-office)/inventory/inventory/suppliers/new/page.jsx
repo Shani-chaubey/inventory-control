@@ -21,10 +21,11 @@ const NewSupplier = ({initialData = {}, isUpdated=false}) => {
    }
 
   const onSubmit = async(data) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if(isUpdated){
-      makePutRequest( setLoading, `/api/suppliers/${initialData.id}`, data, 'Supplier', redirect )
+      makePutRequest( setLoading, `${baseUrl}/api/suppliers/${initialData.id}`, data, 'Supplier', redirect )
     }else{
-      makePostRequest( setLoading, '/api/suppliers', data, 'Supplier', reset )
+      makePostRequest( setLoading, `${baseUrl}/api/suppliers`, data, 'Supplier', reset )
     }
   }
 
