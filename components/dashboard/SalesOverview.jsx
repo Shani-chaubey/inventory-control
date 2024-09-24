@@ -6,35 +6,35 @@ import { getData } from '@/lib/apiRequest'
 
 
 const SalesOverview = async() => {
-    const categoriesCount = getData('/api/categories')
-    const itemsCount = getData('/api/items')
-    const suppliersCount = getData('/api/suppliers')
-    const warehousesCount = getData('/api/warehouse')
+    const categoriesCount = getData('/api/categories/count')
+    const itemsCount = getData('/api/items/count')
+    const suppliersCount = getData('/api/suppliers/count')
+    const warehousesCount = getData('/api/warehouse/count')
     const warehouses = getData('/api/warehouse')
 
     const [ categoryCount, itemCount, supplierCount, warehouseCount, warehouse ] = await Promise.all([ categoriesCount, itemsCount, suppliersCount, warehousesCount, warehouses ])
     
     const salesActivity = [
         {
-            qty: categoryCount.length,
+            qty: categoryCount,
             status: 'Categories',
             color: 'text-blue-600',
             href: '/inventory/inventory/categories'
         },
         {
-            qty: itemCount.length,
+            qty: itemCount,
             status: 'Items',
             color: 'text-orange-600',
             href: '/inventory/inventory/items'
         },
         {
-            qty: supplierCount.length,
+            qty: supplierCount,
             status: 'Suppliers',
             color: 'text-green-600',
             href: '/inventory/inventory/suppliers'
         },
         {
-            qty: warehouse.length,
+            qty: warehouseCount,
             status: 'Warehouses',
             color: 'text-yellow-600',
             href: '/inventory/inventory/warehouse'
