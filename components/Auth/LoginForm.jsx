@@ -8,7 +8,10 @@ import toast from "react-hot-toast";
 
 export default function LoginForm() {
   const router = useRouter();
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
+  if(status==="authenticated"){
+    router.push('/inventory/home/overview')
+  }
   const {
     register,
     handleSubmit,
