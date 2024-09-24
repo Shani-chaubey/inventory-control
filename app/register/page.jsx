@@ -1,3 +1,4 @@
+"use client"
 import RegisterForm from "@/components/Auth/RegisterForm";
 import Loader from "@/components/dashboard/Loader";
 import { useSession } from "next-auth/react";
