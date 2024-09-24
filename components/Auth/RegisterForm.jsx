@@ -1,4 +1,5 @@
 "use client";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -7,6 +8,10 @@ import toast from "react-hot-toast";
 
 export default function RegisterForm() {
   const router = useRouter();
+  const { data: session, status } = useSession()
+  if(status==="authenticated"){
+    router.push('/inventory/home/overview')
+  }
   const {
     register,
     handleSubmit,
@@ -57,7 +62,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <>
+    <> 
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-4 md:space-y-6"
